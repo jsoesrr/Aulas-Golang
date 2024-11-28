@@ -1,0 +1,41 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+type Produto struct {
+	name     string
+	quantity int
+}
+
+func main() {
+	var produtos []Produto
+	var nome string
+	var quantidade int
+
+	linha := strings.Repeat("-", 30)
+	for {
+		fmt.Print("Digite qual produto deseja comprar, ou 'sair' para terminar :")
+		fmt.Println("   ")
+		fmt.Scan(&nome)
+
+		if nome == "sair" {
+			break
+		}
+		fmt.Print("Digite quantidade: ")
+		fmt.Scan(&quantidade)
+
+		produto := Produto{
+			name:     nome,
+			quantity: quantidade,
+		}
+		produtos = append(produtos, produto)
+	}
+	fmt.Println("\n", linha, "\nProdutos Armazenados:")
+	for _, produto := range produtos {
+		fmt.Printf("Nome: %s, Quantidade: %d\n", produto.name, produto.quantity)
+	}
+
+}
